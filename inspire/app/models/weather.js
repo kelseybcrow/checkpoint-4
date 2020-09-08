@@ -10,4 +10,13 @@ export default class Weather {
     //check out the other data that comes back and see if there is anything you want to try
 
   }
+
+  get Template() {
+    return `<div class="card col-12">
+              <div class="card-body d-flex flex-direction-column">
+                <p class="card-text my-auto  pl-3">${this.city}</p>
+                <p class="card-text my-auto  pl-3">${this.kelvin}</p>
+=             </div>
+            </div>`
+  }
 }
