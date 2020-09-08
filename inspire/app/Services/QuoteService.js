@@ -5,7 +5,7 @@ import { api } from "./AxiosService.js";
 class QuoteService {
   async getQuote() {
     console.log("hello from quoteservice");
-    let res = await api.get('quote');
+    let res = await api.get('quotes');
     ProxyState.quote = new Quote(res.data);
   }
 }

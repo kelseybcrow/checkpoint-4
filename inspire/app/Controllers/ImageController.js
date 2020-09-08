@@ -2,11 +2,7 @@ import { ProxyState } from "../AppState.js";
 import imageService from "../Services/ImageService.js";
 
 function drawImage() {
-  let template = ""
-  ProxyState.image.forEach(i => template += i.Template)
-  document.body.style.backgroundImage = template
-  //document.getElementById("image").innerHTML = template
-  console.log(ProxyState.image);
+  document.body.style.backgroundImage = ProxyState.image
 }
 export default class ImageController {
   constructor() {

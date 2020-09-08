@@ -2,9 +2,7 @@ import { ProxyState } from "../AppState.js";
 import quoteService from "../Services/QuoteService.js";
 
 function drawQuote() {
-  let template = ""
-  ProxyState.quote.forEach(q => template += q.Template)
-  document.getElementById("quote").innerHTML = template
+  document.getElementById("quote").innerHTML = ProxyState.quote.Template
   console.log(ProxyState.quote);
 }
 export default class QuoteController {

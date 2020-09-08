@@ -9,16 +9,15 @@ class TodoService {
     console.log("Getting the Todo List");
     let res = await api.get(url);
     //TODO Handle this response from the server
-    ProxyState.myTodos = res.data.data.map(t => new Todo(t))
+    ProxyState.todos = res.data.data.map(t => new todo(t))
 
   }
 
   async addTodo(todo) {
     let res = await api.post(url, todo);
     //TODO Handle this response from the server
-    ProxyState.activeTodo = null
-    ProxyState.myTodos = [...ProxyState.myTodos, new Todo(res.data.data)]
-  }
+    ProxyState.todos = [...ProxyState.todos, new todo(res.data.data)]
+
 
   async toggleTodoStatus(todoId) {
     let todo = await ProxyState.todos.find(todo => todo.id == todoId);
@@ -35,13 +34,7 @@ class TodoService {
     //		what is the request type
     //		once the response comes back, how do you update the state
     let res = await api.delete(todoId)
-    ProxyState.activeTodo = null
-    let index = ProxyState.myTodos.findIndex(t => t._id == id)
-    if (index == -1) {
-      throw Error
-    }
-    ProxyState.myTodos.splice(index, 1)
-    ProxyState.myTodos = ProxyState.myTodos
+
   }
 }
 
