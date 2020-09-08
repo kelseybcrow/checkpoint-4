@@ -1,11 +1,15 @@
 import todoService from "../Services/TodoService.js";
+import { ProxyState } from "../AppState.js";
 
 //TODO Create the draw function
-function _drawTodos() { }
+function _drawTodos() {
+  document.getElementById("todos").innerHTML = ProxyState.todos.Template
+  console.log(ProxyState.todos);
+}
 
 export default class TodoController {
   constructor() {
-    //TODO Remember to register your subscribers
+    ProxyState.on('todo', _drawTodos);
     todoService.getTodos();
   }
 
@@ -30,7 +34,7 @@ export default class TodoController {
 
   /**
  * This method takes in an id of the Todo that should be togggled as complete
- * @param {string} todoId 
+ * @param {string} todoId
  */
   toggleTodoStatus(todoId) {
     try {
@@ -42,7 +46,7 @@ export default class TodoController {
 
   /**
    * This method takes in an id of the Todo that should be removed
-   * @param {string} todoId 
+   * @param {string} todoId
    */
   removeTodo(todoId) {
     try {

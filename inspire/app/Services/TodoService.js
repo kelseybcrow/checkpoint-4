@@ -17,7 +17,7 @@ class TodoService {
     let res = await api.post(url, todo);
     //TODO Handle this response from the server
     ProxyState.todos = [...ProxyState.todos, new todo(res.data.data)]
-
+    }
 
   async toggleTodoStatus(todoId) {
     let todo = await ProxyState.todos.find(todo => todo.id == todoId);
