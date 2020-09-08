@@ -1,22 +1,21 @@
-//TODO Create methods for constructor, and rendering the quote to the page
 import { ProxyState } from "../AppState.js";
 import quoteService from "../Services/QuoteService.js";
 
 function drawQuote() {
   let template = ""
   ProxyState.quote.forEach(q => template += q.Template)
-  document.getElementById("weather").innerHTML = template
-  console.log("THE WEATHER MAN SAYS:", ProxyState.weather);
+  document.getElementById("quote").innerHTML = template
+  console.log(ProxyState.quote);
 }
-export default class WeatherController {
+export default class QuoteController {
   constructor() {
-    ProxyState.on("weather", drawWeather);
-    this.getWeather()
+    ProxyState.on("quote", drawQuote);
+    this.getQuote()
   }
 
-  getWeather() {
+  getQuote() {
     try {
-      weatherService.getWeather()
+      quoteService.getQuote()
     }
     catch (e) {
       console.error(e)
