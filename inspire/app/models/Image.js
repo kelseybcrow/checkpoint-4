@@ -3,8 +3,8 @@ export default class Image {
     this.image = data.image
   }
 
-// get Template() {
-//   return `<div class="row">
-//             <img class="image-fluid" src="${this.image}" alt="">
-//           </div>`
+get Template() {
+  return `<img class="image-fluid" src="${this.image}" alt="">`
+}
+
 }
